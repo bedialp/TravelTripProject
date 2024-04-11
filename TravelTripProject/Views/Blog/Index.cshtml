@@ -1,4 +1,4 @@
-﻿@model List<TravelTripProject.Models.Siniflar.Blog>
+﻿@model TravelTripProject.Models.Siniflar.BlogYorum
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_TestLayout.cshtml";
@@ -37,11 +37,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="single">
             <div class="container">
                 <div class="col-md-8 single-main">
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.Deger1)
                     {
                         <div class="single-grid">
-                            <img src="@item.BlogImage" class="img-fluid" style="width:690px; height:330px; object-fit:cover;" />
-                            <a href="#">@item.Baslik</a>
+                            <img src="@item.BlogImage" class="img-fluid" style="width:690px; height:330px; margin-bottom:10px; object-fit:cover;" />
+                            <a href="/Blog/BlogDetay/@item.ID">@item.Baslik</a>
                             <p>@item.Aciklama</p>
                         </div>
                         <br /><br />
@@ -51,12 +51,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="col-md-4 side-content">
                     <div class="recent">
                         <h3><b>SON BLOGLAR</b></h3>
-                        <ul>
-                            <li><a href="#">Aliquam tincidunt mauris</a></li>
-                            <li><a href="#">Vestibulum auctor dapibus  lipsum</a></li>
-                            <li><a href="#">Nunc dignissim risus consecu</a></li>
-                            <li><a href="#">Cras ornare tristiqu</a></li>
-                        </ul>
+                        @foreach (var item3 in Model.Deger3)
+                        {
+                            <ul>
+                                <li><a href="/Blog/BlogDetay/@item3.ID">@item3.Baslik</a></li>
+                            </ul>
+                        }
+
                     </div>
                     <div class="comments">
                         <h3><b>SON YORUMLAR</b></h3>

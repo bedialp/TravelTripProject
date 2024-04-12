@@ -20,6 +20,8 @@ namespace TravelTripProject.Controllers
             by.Deger3 = c.Blogs.OrderByDescending(item3=>item3.ID).Take(3).ToList();
             return View(by);
         }
+
+        // BLOG DETAY ISLEMLER
         public ActionResult BlogDetay(int id)
         {
             //var blogbul = c.Blogs.Where(x => x.ID == id).ToList();
@@ -28,5 +30,21 @@ namespace TravelTripProject.Controllers
             by.Deger3 = c.Blogs.OrderByDescending(item3 => item3.ID).Take(3).ToList();
             return View(by);
         }
+
+        // YORUM YAP ISLEMLER
+        [HttpGet]
+        public PartialViewResult YorumYap(int id)
+        {
+            ViewBag.deger = id;
+            return PartialView();
+        }
+        [HttpPost]
+        public PartialViewResult YorumYap(Yorumlar y)
+        {
+            c.Yorumlars.Add(y);
+            c.SaveChanges();
+            return PartialView();
+        }
+        
     }
 }
